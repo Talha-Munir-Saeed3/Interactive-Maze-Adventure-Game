@@ -143,3 +143,22 @@ g++ -std=c++11 -O2 main.cpp -o maze_game
 
 # 3. Run the game
 ./maze_game
+
+```
+> **Note for Windows Users:** If compiling natively on Windows `cmd.exe` or PowerShell, change `system("clear")` to `system("cls")` inside `move()`, or run the binary via Git Bash or WSL.
+
+---
+
+## 🛠 Future Improvements
+
+- [ ] Add cross-platform terminal screen clearing (`#ifdef _WIN32`).
+- [ ] Free dynamically allocated memory (`delete[] maze`, `delete[] adj`) between level transitions to eliminate memory leaks.
+- [ ] Implement A* pathfinding as an alternative heuristic-based solver.
+- [ ] Add colored terminal rendering via ANSI escape sequences (e.g., green start, red obstacles, gold finish).
+- [ ] Persist high scores to a local file.
+
+---
+
+## 📝 License
+
+This project is open-source and licensed under the [MIT License](LICENSE).
