@@ -91,3 +91,55 @@ $$\text{Node Index} = (i \times N) + j$$
 ---
 
 ## 📊 Level Progression & Scoring
+
+| Level | Grid Dimensions | Obstacle Density | Target Objective |
+| :---: | :---: | :---: | :---|
+| **Level 1** | $8 \times 8$ | 15% | Reach extraction cell $(7, 7)$ |
+| **Level 2** | $9 \times 9$ | 20% | Reach extraction cell $(8, 8)$ |
+| **Level 3** | $10 \times 10$ | 25% | Reach extraction cell $(9, 9)$ |
+| **Level 4** | $11 \times 11$ | 30% | Reach extraction cell $(10, 10)$ |
+| **Level 5** | $12 \times 12$ | 35% | Reach extraction cell $(11, 11)$ ➔ **🎉 VICTORY!** |
+
+---
+
+### Scoring Formula Breakdown
+Points are calculated relative to the BFS shortest path ($sp$) and an estimated upper threshold:
+
+$$\text{Longest Path Metric} = N^2 - (\text{percent} \times N^2)$$
+$$\text{Average Metric} = \frac{\text{Longest} + \text{Shortest}}{2}$$
+
+- **Perfect Match:** Taking exact shortest path $\rightarrow$ **$+100$ pts**
+- **Near Optimal:** $\text{Steps} = \text{Shortest} + \Delta$ $\rightarrow$ Scales from **$+95$** down to **$+50$ pts** based on step differential:
+  - $+1$ step: **95 pts**
+  - $+2$ steps: **90 pts**
+  - $+3$ steps: **85 pts**
+  - $+4$ steps: **80 pts**
+  - $+5$ steps: **75 pts**
+  - $+6$ steps: **70 pts**
+  - $+7$ steps: **65 pts**
+  - $+8$ steps: **60 pts**
+  - $+9$ steps: **55 pts**
+  - $\ge +10$ steps: **50 pts**
+- **Average Performance:** $\text{Steps} = \text{Average}$ $\rightarrow$ **$+50$ pts**
+- **Sub-optimal Path:** $\text{Steps} > \text{Average}$ $\rightarrow$ **$+40$ pts**
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- A modern C++ compiler (`g++`, `clang++`, or MSVC)
+- POSIX-compliant terminal (Linux/macOS) or Windows Terminal running WSL / MinGW (`system("clear")` compatible)
+
+### Compilation & Execution
+
+```bash
+# 1. Clone your repository
+git clone [https://github.com/your-username/maze-runner-cpp.git](https://github.com/your-username/maze-runner-cpp.git)
+cd maze-runner-cpp
+
+# 2. Compile using g++ (C++11 or higher)
+g++ -std=c++11 -O2 main.cpp -o maze_game
+
+# 3. Run the game
+./maze_game
